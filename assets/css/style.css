@@ -188,18 +188,45 @@ h1, h2 {
 /* ===============================
    BLOG POST
 ================================ */
-.post {
-  max-width: 800px;
-  margin: 0 auto 30px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 14px;
 }
 
-.post p {
-  margin: 12px 0;
+.post-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
+
+.post-meta i {
+  color: #d83b6a;
+}
+
+/* Tinh tế hơn cho post */
+.post {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.post h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #d83b6a;
+}
+
+.post-tags i, .post-date i, .post-difficulty i {
+  font-size: 14px;
+}
+
 
 /* ===============================
    MATH
@@ -544,3 +571,4 @@ a:hover {
   .week-badge {
   top: 50px;  /* mặc định là 0 */
 }
+
