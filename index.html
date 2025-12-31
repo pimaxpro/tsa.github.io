@@ -98,8 +98,7 @@
       </p>
     </div>
   </section>
-
-  <section class="slider">
+<section class="slider">
   <div class="slides">
     <div class="slide active">
       <img src="assets/images/0001-min.jpg" alt="Slide 1">
@@ -115,16 +114,13 @@
     </div>
   </div>
 
-  <!-- Navigation arrows -->
   <button class="prev">&#10094;</button>
   <button class="next">&#10095;</button>
 
-  <!-- Pagination dots -->
   <div class="dots"></div>
 </section>
 
 <style>
-/* ========== Slider Container ========== */
 .slider {
   position: relative;
   max-width: 900px;
@@ -134,37 +130,28 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* ========== Slides ========== */
 .slides {
   position: relative;
   width: 100%;
-  height: 500px; /* Chiều cao cố định, thay đổi nếu muốn */
 }
 
 .slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  z-index: 1;
+  display: none;
+  text-align: center;
 }
 
 .slide.active {
-  opacity: 1;
-  z-index: 2;
+  display: block;
 }
 
 .slide img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* giữ tỉ lệ, lấp đầy container */
-  display: block;
+  height: auto;      /* tự động theo tỉ lệ ảnh */
+  display: inline-block;
+  object-fit: contain; /* toàn bộ ảnh hiển thị */
 }
 
-/* ========== Navigation Arrows ========== */
+/* Nút prev/next */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -184,13 +171,10 @@
 
 .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
 
-/* ========== Pagination Dots ========== */
+/* Dots */
 .dots {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
   text-align: center;
-  z-index: 10;
+  margin-top: 10px;
 }
 
 .dot {
@@ -198,24 +182,13 @@
   width: 12px;
   height: 12px;
   margin: 0 6px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.3);
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
 .dot.active, .dot:hover {
-  background: rgba(255,255,255,1);
-}
-
-/* ========== Responsive ========== */
-@media (max-width: 768px) {
-  .slides { height: 300px; }
-  .prev, .next { font-size: 20px; padding: 10px 16px; }
-}
-
-@media (max-width: 480px) {
-  .slides { height: 200px; }
+  background: rgba(0,0,0,0.8);
 }
 </style>
 
@@ -227,32 +200,24 @@ const next = document.querySelector('.next');
 let current = 0;
 let slideInterval;
 
-// Tạo dot tự động
+// tạo dot
 slides.forEach((_, i) => {
   const dot = document.createElement('span');
   dot.classList.add('dot');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => {
-    showSlide(i);
-    resetInterval();
-  });
+  if(i===0) dot.classList.add('active');
+  dot.addEventListener('click', () => { showSlide(i); resetInterval(); });
   dotsContainer.appendChild(dot);
 });
 const dots = document.querySelectorAll('.dot');
 
 function showSlide(n) {
-  slides.forEach((slide, i) => slide.classList.toggle('active', i === n));
-  dots.forEach((dot, i) => dot.classList.toggle('active', i === n));
+  slides.forEach((slide,i) => slide.classList.toggle('active', i===n));
+  dots.forEach((dot,i) => dot.classList.toggle('active', i===n));
   current = n;
 }
 
-function nextSlide() {
-  showSlide((current + 1) % slides.length);
-}
-
-function prevSlide() {
-  showSlide((current - 1 + slides.length) % slides.length);
-}
+function nextSlide() { showSlide((current+1)%slides.length); }
+function prevSlide() { showSlide((current-1+slides.length)%slides.length); }
 
 next.addEventListener('click', () => { nextSlide(); resetInterval(); });
 prev.addEventListener('click', () => { prevSlide(); resetInterval(); });
@@ -262,15 +227,13 @@ function resetInterval() {
   slideInterval = setInterval(nextSlide, 4000);
 }
 
-// Tự động slide
 slideInterval = setInterval(nextSlide, 4000);
 
-// Dừng auto khi hover
+// dừng auto khi hover
 const slider = document.querySelector('.slider');
 slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
 slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
 </script>
-
 
 </div>
 
@@ -280,6 +243,7 @@ slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlid
 
 </body>
 </html>
+
 
 
 
