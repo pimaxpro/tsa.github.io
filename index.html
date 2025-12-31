@@ -100,7 +100,8 @@
   </section>
 
 
-<section class="slider">
+
+  <section class="slider">
   <div class="slides">
     <div class="slide active">
       <img src="assets/images/0001-min.jpg" alt="Slide 1">
@@ -128,61 +129,6 @@
   <div class="dots"></div>
 </section>
 
-<script>
-const slides = document.querySelectorAll('.slide');
-const dotsContainer = document.querySelector('.dots');
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
-let current = 0;
-let slideInterval;
-
-// --- TỰ ĐỘNG SINH DOT ---
-slides.forEach((_, i) => {
-  const dot = document.createElement('span');
-  dot.classList.add('dot');
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => {
-    showSlide(i);
-    resetInterval();
-  });
-  dotsContainer.appendChild(dot);
-});
-const dots = document.querySelectorAll('.dot');
-
-function showSlide(n) {
-  slides.forEach((slide,i) => slide.classList.toggle('active', i === n));
-  dots.forEach((dot,i) => dot.classList.toggle('active', i === n));
-  current = n;
-}
-
-function nextSlide() {
-  showSlide((current + 1) % slides.length);
-}
-
-function prevSlide() {
-  showSlide((current - 1 + slides.length) % slides.length);
-}
-
-next.addEventListener('click', () => { nextSlide(); resetInterval(); });
-prev.addEventListener('click', () => { prevSlide(); resetInterval(); });
-
-function resetInterval() {
-  clearInterval(slideInterval);
-  slideInterval = setInterval(nextSlide, 4000);
-}
-
-// Start auto sliding
-slideInterval = setInterval(nextSlide, 4000);
-
-// Stop on hover
-const slider = document.querySelector('.slider');
-slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
-</script>
-
-
-  
-<!-- CSS -->
 <style>
 .slider {
   position: relative;
@@ -194,23 +140,29 @@ slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlid
 }
 
 .slides {
-  display: flex;
-  transition: transform 0.6s ease;
+  position: relative;
+  height: 500px; /* hoặc auto nếu muốn tự động theo ảnh */
 }
 
 .slide {
-  min-width: 100%;
-  transition: opacity 0.6s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
 .slide.active {
   opacity: 1;
+  z-index: 2;
 }
 
 .slide img {
   width: 100%;
-  display: block;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Navigation arrows */
@@ -259,6 +211,57 @@ slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlid
 }
 </style>
 
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.querySelector('.dots');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+let current = 0;
+let slideInterval;
+
+// tạo dot
+slides.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    showSlide(i);
+    resetInterval();
+  });
+  dotsContainer.appendChild(dot);
+});
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(n) {
+  slides.forEach((slide,i) => slide.classList.toggle('active', i === n));
+  dots.forEach((dot,i) => dot.classList.toggle('active', i === n));
+  current = n;
+}
+
+function nextSlide() {
+  showSlide((current + 1) % slides.length);
+}
+
+function prevSlide() {
+  showSlide((current - 1 + slides.length) % slides.length);
+}
+
+next.addEventListener('click', () => { nextSlide(); resetInterval(); });
+prev.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 4000);
+}
+
+slideInterval = setInterval(nextSlide, 4000);
+
+const slider = document.querySelector('.slider');
+slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
+</script>
+
+
 
 
 </div>
@@ -269,6 +272,7 @@ slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlid
 
 </body>
 </html>
+
 
 
 
