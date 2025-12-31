@@ -21,7 +21,7 @@ h1, h2 {
 ================================ */
 .hero {
   max-width: 900px;
-  margin: 40px auto 60px;
+  margin: 30px auto 60px;
   text-align: center;
 }
 
@@ -579,6 +579,7 @@ a:hover {
 .hero-title-link:hover {
   color: #c02f5c;   /* Đổi màu khi hover nếu muốn */
 }
+
 
 
 
