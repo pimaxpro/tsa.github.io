@@ -570,5 +570,15 @@ a:hover {
   .week-badge {
   top: 50px;  /* mặc định là 0 */
 }
+.hero-title-link {
+  color: #d83b6a;   /* Màu hồng đậm như cũ */
+  text-decoration: none; /* Bỏ gạch chân */
+  cursor: pointer;
+}
+
+.hero-title-link:hover {
+  color: #c02f5c;   /* Đổi màu khi hover nếu muốn */
+}
+
 
 
