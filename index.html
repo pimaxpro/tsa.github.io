@@ -98,7 +98,8 @@
       </p>
     </div>
   </section>
-  <!-- SLIDE SHOW -->
+
+
 <section class="slider">
   <div class="slides">
     <div class="slide active">
@@ -111,28 +112,76 @@
       <img src="assets/images/0003-min.jpg" alt="Slide 3">
     </div>
     <div class="slide">
-      <img src="assets/images/0004-min.jpg" alt="Slide 3">
+      <img src="assets/images/0004-min.jpg" alt="Slide 4">
     </div>
     <div class="slide">
-      <img src="assets/images/0005-min.jpg" alt="Slide 3">
+      <img src="assets/images/0005-min.jpg" alt="Slide 5">
     </div>
     <div class="slide">
-      <img src="assets/images/0006-min.jpg" alt="Slide 3">
+      <img src="assets/images/0006-min.jpg" alt="Slide 6">
     </div>
   </div>
 
-  <!-- Navigation arrows -->
   <button class="prev">&#10094;</button>
   <button class="next">&#10095;</button>
 
-  <!-- Pagination dots -->
-  <div class="dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
+  <div class="dots"></div>
 </section>
 
+<script>
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.querySelector('.dots');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+let current = 0;
+let slideInterval;
+
+// --- TỰ ĐỘNG SINH DOT ---
+slides.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (i === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    showSlide(i);
+    resetInterval();
+  });
+  dotsContainer.appendChild(dot);
+});
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(n) {
+  slides.forEach((slide,i) => slide.classList.toggle('active', i === n));
+  dots.forEach((dot,i) => dot.classList.toggle('active', i === n));
+  current = n;
+}
+
+function nextSlide() {
+  showSlide((current + 1) % slides.length);
+}
+
+function prevSlide() {
+  showSlide((current - 1 + slides.length) % slides.length);
+}
+
+next.addEventListener('click', () => { nextSlide(); resetInterval(); });
+prev.addEventListener('click', () => { prevSlide(); resetInterval(); });
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 4000);
+}
+
+// Start auto sliding
+slideInterval = setInterval(nextSlide, 4000);
+
+// Stop on hover
+const slider = document.querySelector('.slider');
+slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
+</script>
+
+
+  
 <!-- CSS -->
 <style>
 .slider {
@@ -210,58 +259,7 @@
 }
 </style>
 
-<!-- JS -->
-<script>
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
-let current = 0;
-let slideInterval = setInterval(nextSlide, 4000);
 
-function showSlide(n) {
-  slides.forEach((slide,i) => {
-    slide.classList.toggle('active', i === n);
-    dots[i].classList.toggle('active', i === n);
-  });
-  current = n;
-}
-
-function nextSlide() {
-  showSlide((current + 1) % slides.length);
-}
-
-function prevSlide() {
-  showSlide((current - 1 + slides.length) % slides.length);
-}
-
-next.addEventListener('click', () => {
-  nextSlide();
-  resetInterval();
-});
-
-prev.addEventListener('click', () => {
-  prevSlide();
-  resetInterval();
-});
-
-dots.forEach((dot, i) => {
-  dot.addEventListener('click', () => {
-    showSlide(i);
-    resetInterval();
-  });
-});
-
-function resetInterval() {
-  clearInterval(slideInterval);
-  slideInterval = setInterval(nextSlide, 4000);
-}
-
-// Stop auto sliding on hover
-const slider = document.querySelector('.slider');
-slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
-</script>
 
 </div>
 
@@ -271,6 +269,7 @@ slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlid
 
 </body>
 </html>
+
 
 
 
