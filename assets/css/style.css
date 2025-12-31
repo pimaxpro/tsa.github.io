@@ -1,5 +1,5 @@
 /* ===============================
-   BASE
+   BASE / RESET
 ================================ */
 body {
   margin: 0;
@@ -14,6 +14,71 @@ h1, h2 {
 
 #content {
   padding: 30px 20px;
+}
+
+/* ===============================
+   HERO / TITLE
+================================ */
+.hero {
+  max-width: 900px;
+  margin: 70px auto 60px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  color: #d83b6a;
+  margin-bottom: 14px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 20px;
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: #d83b6a;
+  color: white;
+  box-shadow: 0 6px 18px rgba(216, 59, 106, 0.35);
+}
+
+.btn.primary:hover {
+  background: #c02f5c;
+}
+
+.btn.ghost {
+  background: white;
+  color: #d83b6a;
+  border: 2px solid #d83b6a;
+}
+
+.btn.ghost:hover {
+  background: #fff0f6;
 }
 
 /* ===============================
@@ -33,11 +98,11 @@ h1, h2 {
   align-items: center;
   gap: 8px;
 
-  padding: 8px 16px;       /* giảm padding để nhỏ gọn */
+  padding: 8px 16px;
   background: white;
 
-  border-radius: 8px;      /* bo tròn vừa phải */
-  font-size: 16px;         /* chữ nhỏ hơn */
+  border-radius: 8px;
+  font-size: 16px;
   font-weight: 600;
   color: #333;
 
@@ -66,66 +131,42 @@ h1, h2 {
   pointer-events: none;
 }
 
-
 /* ===============================
-   HERO / TITLE
+   INTRO / CARDS
 ================================ */
-.hero h1 {
-  font-size: 52px;      /* giảm chút cho cân đối */
-  font-weight: 900;
+.intro {
+  max-width: 1100px;
+  margin: 60px auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.intro-card {
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.intro-card i {
+  font-size: 36px;
   color: #d83b6a;
   margin-bottom: 14px;
-  text-align: center;    /* căn giữa */
-  letter-spacing: 1px;
 }
 
-.hero-sub {
-  font-size: 18px;
-  color: #555;
-  text-align: center;
-  margin-bottom: 30px;
+.intro-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 10px 20px;   /* nhỏ gọn hơn */
-  border-radius: 12px;
+.intro-card p {
   font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
+  color: #555;
 }
-
-.btn.primary {
-  background: #d83b6a;
-  color: white;
-  box-shadow: 0 6px 18px rgba(216, 59, 106, 0.35);
-}
-
-.btn.primary:hover {
-  background: #c02f5c;
-}
-
-.btn.ghost {
-  background: white;
-  color: #d83b6a;
-  border: 2px solid #d83b6a;
-}
-
-.btn.ghost:hover {
-  background: #fff0f6;
-}
-
-
 
 /* ===============================
    BLOG POST
@@ -143,7 +184,6 @@ h1, h2 {
   margin: 12px 0;
 }
 
-
 /* ===============================
    MATH
 ================================ */
@@ -155,7 +195,6 @@ mjx-container {
   text-align: center;
   margin: 20px 0;
 }
-
 
 /* ===============================
    SOLUTION
@@ -188,5 +227,3 @@ mjx-container {
 .solution-content.open {
   display: block;
 }
-
-
