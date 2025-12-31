@@ -98,22 +98,21 @@
       </p>
     </div>
   </section>
-  <section class="slider">
+ <section class="slider">
   <div class="slides">
-    <div class="slide active">
-      <img src="assets/images/0001-min.jpg" alt="Slide 1">
-    </div>
-    <div class="slide">
-      <img src="assets/images/0002-min.jpg" alt="Slide 2">
-    </div>
-    <div class="slide">
-      <img src="assets/images/0003-min.jpg" alt="Slide 3">
-    </div>
+    <div class="slide active"><img src="assets/images/0001-min.jpg" alt="Slide 1"></div>
+    <div class="slide"><img src="assets/images/0002-min.jpg" alt="Slide 2"></div>
+    <div class="slide"><img src="assets/images/0003-min.jpg" alt="Slide 3"></div>
+    <div class="slide"><img src="assets/images/0004-min.jpg" alt="Slide 4"></div>
+    <div class="slide"><img src="assets/images/0005-min.jpg" alt="Slide 5"></div>
+    <div class="slide"><img src="assets/images/0006-min.jpg" alt="Slide 6"></div>
   </div>
 
+  <!-- Nút prev/next -->
   <button class="prev">&#10094;</button>
   <button class="next">&#10095;</button>
 
+  <!-- Dots -->
   <div class="dots"></div>
 </section>
 
@@ -121,11 +120,11 @@
 .slider {
   position: relative;
   max-width: 900px;
+  height: 500px;
   margin: 50px auto;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  height: 500px; /* chiều cao cố định để fade mượt */
 }
 
 .slides {
@@ -136,11 +135,11 @@
 
 .slide {
   position: absolute;
-  top:0; left:0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 1s ease-in-out;
 }
 
 .slide.active {
@@ -151,10 +150,10 @@
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* toàn ảnh hiển thị */
+  object-fit: cover;
 }
 
-/* Nút prev/next */
+/* Prev/Next */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -190,11 +189,10 @@
   background: rgba(0,0,0,0.3);
   border-radius: 50%;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
-.dot.active, .dot:hover {
-  background: rgba(0,0,0,0.8);
-}
+.dot.active, .dot:hover { background: rgba(0,0,0,0.8); }
 </style>
 
 <script>
@@ -205,11 +203,11 @@ const next = document.querySelector('.next');
 let current = 0;
 let slideInterval;
 
-// tạo dot
+// Tạo dot cho mỗi slide
 slides.forEach((_, i) => {
   const dot = document.createElement('span');
   dot.classList.add('dot');
-  if(i===0) dot.classList.add('active');
+  if(i === 0) dot.classList.add('active');
   dot.addEventListener('click', () => { showSlide(i); resetInterval(); });
   dotsContainer.appendChild(dot);
 });
@@ -221,23 +219,24 @@ function showSlide(n) {
   current = n;
 }
 
-function nextSlide() { showSlide((current+1)%slides.length); }
-function prevSlide() { showSlide((current-1+slides.length)%slides.length); }
+function nextSlide() { showSlide((current + 1) % slides.length); }
+function prevSlide() { showSlide((current - 1 + slides.length) % slides.length); }
 
 next.addEventListener('click', () => { nextSlide(); resetInterval(); });
 prev.addEventListener('click', () => { prevSlide(); resetInterval(); });
 
 function resetInterval() {
   clearInterval(slideInterval);
-  slideInterval = setInterval(nextSlide, 4000);
+  slideInterval = setInterval(nextSlide, 2000);
 }
 
-slideInterval = setInterval(nextSlide, 4000);
+// Khởi tạo auto slide
+slideInterval = setInterval(nextSlide, 2000);
 
-// dừng auto khi hover
+// Dừng auto khi hover
 const slider = document.querySelector('.slider');
 slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
-slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
+slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 2000));
 </script>
 
 </div>
@@ -248,6 +247,7 @@ slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlid
 
 </body>
 </html>
+
 
 
 
