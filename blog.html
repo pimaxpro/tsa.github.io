@@ -1,16 +1,34 @@
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['\\(', '\\)']],
-      displayMath: [['$$', '$$']]
-    },
-    svg: { fontCache: 'global' }
-  };
-</script>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog giải toán – PIMAX TSA</title>
 
-<script async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- MathJax CONFIG (PHẢI ĐẶT TRONG HEAD) -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+
+  <!-- MathJax -->
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+
+<body>
 
 <div id="page-content">
 
@@ -29,6 +47,7 @@
 
     <div class="solution">
       <button onclick="toggleSolution(this)">Solution</button>
+
       <div class="solution-content">
         Đặt \(u=x^2\), ta được
         $$\frac{e-1}{2}$$
@@ -38,3 +57,9 @@
 
 </div>
 
+<!-- SCRIPT CUỐI TRANG -->
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
