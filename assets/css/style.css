@@ -197,15 +197,13 @@ h1, h2 {
   box-shadow: 0 6px 20px rgba(0,0,0,0.06);
   position: relative;
 }
-
-/* Post meta - nằm bên phải */
 .post-meta {
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 16px;
   font-size: 14px;
-  color: rgba(102, 102, 102, 0.7); /* xám nhẹ, mờ mờ */
+  color: rgba(102, 102, 102, 0.7);
   margin-bottom: 10px;
 }
 
@@ -216,10 +214,9 @@ h1, h2 {
 }
 
 .post-meta i {
-  color: rgba(216, 59, 106, 0.5); /* icon hồng nhạt */
+  color: rgba(216, 59, 106, 0.5);
 }
 
-/* Dòng kẻ ngăn cách dưới meta */
 .post-meta::after {
   content: "";
   display: block;
@@ -228,14 +225,6 @@ h1, h2 {
   background: rgba(102, 102, 102, 0.2);
   margin-top: 8px;
 }
-
-/* Tiêu đề bài toán */
-.post h2 {
-  font-size: 24px;
-  margin: 12px 0 14px;
-  color: #d83b6a;
-}
-
 
 
 /* ===============================
@@ -581,5 +570,6 @@ a:hover {
   .week-badge {
   top: 50px;  /* mặc định là 0 */
 }
+
 
 
