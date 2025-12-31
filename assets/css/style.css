@@ -580,6 +580,53 @@ a:hover {
   color: #c02f5c;   /* Đổi màu khi hover nếu muốn */
 }
 
+.drive-embed-box {
+  max-width: 800px;
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 15px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  margin: 30px auto;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.drive-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.drive-header i {
+  font-size: 28px;
+  color: #d83b6a; /* màu chủ đề web */
+}
+
+.drive-header h3 {
+  font-size: 20px;
+  margin: 0;
+  color: #222;
+}
+
+/* Row chứa thông tin chi tiết */
+.drive-info-row {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.drive-info-row i {
+  margin-right: 4px;
+  color: #d83b6a; /* icon cùng màu chủ đề */
+}
+
+.drive-iframe iframe {
+  width: 100%;
+  height: 90vh; /* chiều cao gần bằng màn hình */
+  border: none;
+  border-radius: 12px;
+}
 
 
 
