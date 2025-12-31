@@ -1,16 +1,24 @@
-fetch("/layouts/default.html")
-  .then(res => res.text())
-  .then(html => {
-    document.documentElement.innerHTML = html;
+fetch("layouts/default.html")
+  .then(response => response.text())
+  .then(layoutHTML => {
 
+    const parser = new DOMParser();
+    const layoutDoc = parser.parseFromString(layoutHTML, "text/html");
+
+    const layoutBody = layoutDoc.body;
     const pageContent = document.getElementById("page-content");
-    const main = document.getElementById("content");
 
+    document.body.innerHTML = layoutBody.innerHTML;
+
+    const main = document.getElementById("content");
     if (pageContent && main) {
       main.innerHTML = pageContent.innerHTML;
-
-      if (window.MathJax) {
-        MathJax.typesetPromise([main]);
-      }
     }
+
+    if (window.MathJax) {
+      MathJax.typesetPromise();
+    }
+  })
+  .catch(err => {
+    console.error("Layout load error:", err);
   });
