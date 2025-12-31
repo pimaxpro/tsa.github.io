@@ -97,8 +97,171 @@
         Hệ thống thi thử và chữa bài hàng tuần nhằm sửa lỗi sai và giúp học sinh làm quen với môi trường thi thật
       </p>
     </div>
-
   </section>
+  <!-- SLIDE SHOW -->
+<section class="slider">
+  <div class="slides">
+    <div class="slide active">
+      <img src="assets/images/0001-min.jpg" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="assets/images/0002-min.jpg" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="assets/images/0003-min.jpg" alt="Slide 3">
+    </div>
+    <div class="slide">
+      <img src="assets/images/0004-min.jpg" alt="Slide 3">
+    </div>
+    <div class="slide">
+      <img src="assets/images/0005-min.jpg" alt="Slide 3">
+    </div>
+    <div class="slide">
+      <img src="assets/images/0006-min.jpg" alt="Slide 3">
+    </div>
+  </div>
+
+  <!-- Navigation arrows -->
+  <button class="prev">&#10094;</button>
+  <button class="next">&#10095;</button>
+
+  <!-- Pagination dots -->
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</section>
+
+<!-- CSS -->
+<style>
+.slider {
+  position: relative;
+  max-width: 900px;
+  margin: 50px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.slide {
+  min-width: 100%;
+  transition: opacity 0.6s ease;
+  opacity: 0;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  display: block;
+}
+
+/* Navigation arrows */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active, .dot:hover {
+  background: rgba(255,255,255,1);
+}
+</style>
+
+<!-- JS -->
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+let current = 0;
+let slideInterval = setInterval(nextSlide, 4000);
+
+function showSlide(n) {
+  slides.forEach((slide,i) => {
+    slide.classList.toggle('active', i === n);
+    dots[i].classList.toggle('active', i === n);
+  });
+  current = n;
+}
+
+function nextSlide() {
+  showSlide((current + 1) % slides.length);
+}
+
+function prevSlide() {
+  showSlide((current - 1 + slides.length) % slides.length);
+}
+
+next.addEventListener('click', () => {
+  nextSlide();
+  resetInterval();
+});
+
+prev.addEventListener('click', () => {
+  prevSlide();
+  resetInterval();
+});
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    showSlide(i);
+    resetInterval();
+  });
+});
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(nextSlide, 4000);
+}
+
+// Stop auto sliding on hover
+const slider = document.querySelector('.slider');
+slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
+</script>
 
 </div>
 
@@ -108,6 +271,7 @@
 
 </body>
 </html>
+
 
 
 
