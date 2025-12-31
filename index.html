@@ -98,7 +98,8 @@
       </p>
     </div>
   </section>
- <div class="drive-embed-box">
+
+  <div class="drive-embed-box">
   <div class="drive-header">
     <i class="fa-regular fa-file-lines"></i>
     <h3>TSABK Tournament/PMXST25−WTT11</h3>
@@ -107,7 +108,7 @@
   <div class="drive-info-row">
     <span><i class="fa-regular fa-calendar"></i> 31/12/2025</span>
     <span><i class="fa-solid fa-hashtag"></i> Bài Test 1</span>
-    <span><i class="fa-regular fa-clock"></i> 60 phút</span>
+    <span><i class="fa-regular fa-clock"></i> 46 phút</span>
   </div>
   
   <!-- Iframe nhúng trực tiếp Google Drive -->
@@ -118,6 +119,65 @@
     </iframe>
   </div>
 </div>
+
+<style>
+.drive-embed-box {
+  max-width: 800px;
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  margin: 30px auto;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.drive-embed-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.15);
+}
+
+.drive-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.drive-header i {
+  font-size: 28px;
+  color: #d83b6a; /* màu chủ đề web */
+}
+
+.drive-header h3 {
+  font-size: 20px;
+  margin: 0;
+  color: #222;
+}
+
+/* Row chứa thông tin chi tiết */
+.drive-info-row {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.drive-info-row i {
+  margin-right: 4px;
+  color: #d83b6a; /* icon cùng màu chủ đề */
+}
+
+.drive-iframe iframe {
+  width: 100%;
+  height: 90vh; /* chiều cao gần bằng màn hình */
+  border: none;
+  border-radius: 12px;
+}
+</style>
+
+
+  
 </div>
 
 <!-- SCRIPT PHẢI ĐẶT CUỐI -->
@@ -126,6 +186,7 @@
 
 </body>
 </html>
+
 
 
 
