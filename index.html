@@ -34,6 +34,18 @@
   </nav>
 </div>
 
+<script>
+  // Khi bấm ra ngoài menu, đóng menu
+  document.addEventListener('click', function(e) {
+    const menuDropdown = document.querySelector('.menu-dropdown');
+    const checkbox = document.getElementById('menu-toggle');
+    
+    if (checkbox.checked && !menuDropdown.contains(e.target)) {
+      checkbox.checked = false;
+    }
+  });
+</script>
+
   <!-- HERO -->
   <section class="hero">
     <h1>PIMAX TSA</h1>
@@ -93,6 +105,7 @@
 
 </body>
 </html>
+
 
 
 
