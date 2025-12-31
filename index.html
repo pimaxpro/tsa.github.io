@@ -100,8 +100,7 @@
   </section>
 
 
-
-  <section class="slider">
+<section class="slider">
   <div class="slides">
     <div class="slide active">
       <img src="assets/images/0001-min.jpg" alt="Slide 1">
@@ -112,20 +111,13 @@
     <div class="slide">
       <img src="assets/images/0003-min.jpg" alt="Slide 3">
     </div>
-    <div class="slide">
-      <img src="assets/images/0004-min.jpg" alt="Slide 4">
-    </div>
-    <div class="slide">
-      <img src="assets/images/0005-min.jpg" alt="Slide 5">
-    </div>
-    <div class="slide">
-      <img src="assets/images/0006-min.jpg" alt="Slide 6">
-    </div>
   </div>
 
+  <!-- Navigation arrows -->
   <button class="prev">&#10094;</button>
   <button class="next">&#10095;</button>
 
+  <!-- Pagination dots -->
   <div class="dots"></div>
 </section>
 
@@ -141,7 +133,6 @@
 
 .slides {
   position: relative;
-  height: 500px; /* hoặc auto nếu muốn tự động theo ảnh */
 }
 
 .slide {
@@ -149,9 +140,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  transition: opacity 0.8s ease;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  z-index: 1;
 }
 
 .slide.active {
@@ -161,8 +152,8 @@
 
 .slide img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* giữ tỉ lệ ảnh */
+  display: block;
 }
 
 /* Navigation arrows */
@@ -170,22 +161,20 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.5);
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border-radius: 50%;
   cursor: pointer;
   font-size: 24px;
-  transition: background 0.3s;
-}
-
-.prev:hover, .next:hover {
-  background: rgba(0,0,0,0.7);
+  z-index: 10; /* cao hơn slide */
 }
 
 .prev { left: 20px; }
 .next { right: 20px; }
+
+.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
 
 /* Dots */
 .dots {
@@ -193,6 +182,7 @@
   bottom: 15px;
   width: 100%;
   text-align: center;
+  z-index: 10;
 }
 
 .dot {
@@ -206,9 +196,7 @@
   transition: background 0.3s;
 }
 
-.dot.active, .dot:hover {
-  background: rgba(255,255,255,1);
-}
+.dot.active, .dot:hover { background: rgba(255,255,255,1); }
 </style>
 
 <script>
@@ -272,6 +260,7 @@ slider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlid
 
 </body>
 </html>
+
 
 
 
