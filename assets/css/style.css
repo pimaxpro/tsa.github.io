@@ -572,15 +572,3 @@ a:hover {
 }
 
 
-.tag {
-  color: #d83b6a;
-  text-decoration: none;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.tag:hover {
-  text-decoration: underline;
-}
-
-
