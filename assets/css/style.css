@@ -1,5 +1,5 @@
 /* ===============================
-   BASE / RESET
+   BASE
 ================================ */
 body {
   margin: 0;
@@ -17,7 +17,7 @@ h1, h2 {
 }
 
 /* ===============================
-   HERO / TITLE
+   HERO
 ================================ */
 .hero {
   max-width: 900px;
@@ -26,45 +26,40 @@ h1, h2 {
 }
 
 .hero h1 {
-  font-size: 52px;
+  font-size: 64px;
   font-weight: 900;
   color: #d83b6a;
-  margin-bottom: 14px;
-  text-align: center;
-  letter-spacing: 1px;
+  margin-bottom: 10px;
 }
 
 .hero-sub {
-  font-size: 18px;
+  font-size: 20px;
   color: #555;
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .hero-actions {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-
-  padding: 10px 20px;
+  gap: 10px;
+  padding: 12px 24px;
   border-radius: 12px;
-
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn.primary {
   background: #d83b6a;
   color: white;
-  box-shadow: 0 6px 18px rgba(216, 59, 106, 0.35);
 }
 
 .btn.primary:hover {
@@ -82,62 +77,11 @@ h1, h2 {
 }
 
 /* ===============================
-   MENU
-================================ */
-.menu {
-  max-width: 700px;
-  margin: 20px auto;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.menu a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 8px 16px;
-  background: white;
-
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  transition: all 0.2s ease;
-}
-
-.menu a i {
-  font-size: 18px;
-  color: #d83b6a;
-}
-
-.menu a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(216, 59, 106, 0.25);
-  background: #d83b6a;
-  color: white;
-}
-
-.menu a:hover i {
-  color: white;
-}
-
-.menu a.disabled {
-  opacity: 0.45;
-  pointer-events: none;
-}
-
-/* ===============================
-   INTRO / CARDS
+   INTRO
 ================================ */
 .intro {
   max-width: 1100px;
   margin: 60px auto;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 28px;
@@ -145,27 +89,100 @@ h1, h2 {
 
 .intro-card {
   background: white;
-  padding: 28px;
-  border-radius: 20px;
+  padding: 24px;
+  border-radius: 16px;
   text-align: center;
-
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .intro-card i {
-  font-size: 36px;
+  font-size: 32px;
   color: #d83b6a;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .intro-card h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .intro-card p {
-  font-size: 16px;
+  font-size: 15px;
   color: #555;
+}
+
+/* ===============================
+   MENU DROPDOWN (BÉ GỌN, PHÍA PHẢI)
+================================ */
+.menu-dropdown {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #d83b6a;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.menu-dropdown input[type="checkbox"] {
+  display: none;
+}
+
+.menu-dropdown .menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  padding: 10px 0;
+  min-width: 180px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.menu-dropdown input[type="checkbox"]:checked ~ .menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.menu-dropdown .menu a {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #333;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-dropdown .menu a i {
+  font-size: 18px;
+  color: #d83b6a;
+}
+
+.menu-dropdown .menu a:hover {
+  background: #d83b6a;
+  color: white;
+}
+
+.menu-dropdown .menu a:hover i {
+  color: white;
 }
 
 /* ===============================
@@ -175,9 +192,9 @@ h1, h2 {
   max-width: 800px;
   margin: 0 auto 30px;
   background: #fff;
-  padding: 24px;
-  border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
 }
 
 .post p {
@@ -200,19 +217,20 @@ mjx-container {
    SOLUTION
 ================================ */
 .solution {
-  margin-top: 20px;
+  margin-top: 16px;
   border-left: 4px solid #e14b7f;
-  padding-left: 14px;
+  padding-left: 12px;
 }
 
 .solution button {
   background: #e14b7f;
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 6px 14px;
+  border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .solution button:hover {
@@ -221,7 +239,7 @@ mjx-container {
 
 .solution-content {
   display: none;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 
 .solution-content.open {
