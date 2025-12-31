@@ -1,1 +1,158 @@
 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>2025–2026 – PIMAX TSA</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- MathJax CONFIG -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+
+  <!-- MathJax -->
+  <script async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+
+<body>
+<div id="page-content">
+  <section class="hero">
+    <h1>
+      <a href="index.html" class="hero-title-link">
+        PimaX TSABK Tournament
+      </a>
+    </h1>
+    <p class="hero-sub">
+      Mathematical Thinking • TSA Training • Problem Solving
+    </p>
+  </section>
+
+  <!-- Hamburger Menu Dropdown -->
+  <div class="menu-dropdown">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-icon">
+      <i class="fa-solid fa-bars"></i>
+    </label>
+    <nav class="menu">
+      <a href="index.html">
+        <i class="fa-solid fa-house"></i> Trang chủ
+      </a>
+      <a href="2025-2026.html">
+        <i class="fa-solid fa-calendar-days"></i> 2025–2026
+      </a>
+      <a href="blog.html">
+        <i class="fa-solid fa-pen-nib"></i> Blog giải toán
+      </a>
+    </nav>
+  </div>
+
+  <script>
+  // Khi bấm ra ngoài menu, đóng menu
+  document.addEventListener('click', function(e) {
+    const menuDropdown = document.querySelector('.menu-dropdown');
+    const checkbox = document.getElementById('menu-toggle');
+    
+    if (checkbox.checked && !menuDropdown.contains(e.target)) {
+      checkbox.checked = false;
+    }
+  });
+</script>
+
+<div class="contest-box">
+   <div class="contest-title-box">
+      <i class="fa-solid fa-bullhorn"></i>
+      THỂ LỆ CUỘC THI
+   </div>
+   <ol>
+      <li>
+         <strong>Cấu trúc cuộc thi:</strong><br>
+         Cuộc thi bao gồm <strong>3 chặng</strong> tương ứng với 3 đợt thi chính:
+         <ul>
+            <li>Chặng 1 – <strong>Winter 2025</strong></li>
+            <li>Chặng 2 – <strong>Spring 2026</strong></li>
+            <li>Chặng 3 – <strong>Summer 2026</strong></li>
+         </ul>
+      </li>
+      <li>
+         <strong>Lịch thi hàng tuần:</strong><br>
+         Mỗi tuần thí sinh làm <strong>2 bài test</strong>:
+         <ul>
+            <li>
+               <strong>Bài thi 1:</strong> 40 câu / 60 phút (40 điểm), cấu trúc TSA, 
+               diễn ra vào <strong>thứ 2 hàng tuần</strong>.
+            </li>
+            <li>
+               <strong>Bài thi 2:</strong> 10 câu / 30 phút (10 điểm), chủ yếu là bài toán khó,
+               diễn ra vào <strong>thứ 6 hàng tuần</strong>.
+            </li>
+         </ul>
+         <i class="fa-solid fa-hand-point-right"></i>
+          Lưu ý: Thí sinh cần đăng kí tài khoản trước tại
+         <a href="https://pimaxtsa.com" target="_blank" rel="noopener">pimaxtsa.com</a>.
+      </li>
+      <li>
+         <strong>Cách tính điểm:</strong><br>
+         Điểm mỗi tuần được tính theo công thức:
+         <div class="score-formula">
+            Điểm tuần = Điểm bài 1 + 1.5 × Điểm bài 2
+         </div>
+         Điểm của mỗi chặng là <strong>trung bình cộng điểm các tuần</strong> trong chặng đó.
+      </li>
+      <li>
+         <strong>Phần thưởng:</strong>
+         <div class="reward-block">
+            <p><strong>a) Phần thưởng sau mỗi chặng (Top 3):</strong></p>
+            <ul>
+               <li><i class="fa-solid fa-trophy"></i> <strong>Nhà vô địch:</strong> 1.000.000 VNĐ + Khóa học toàn diện PimaX</li>
+               <li><i class="fa-solid fa-medal silver"></i> <strong>Hai á quân:</strong> mỗi người 500.000 VNĐ + Khóa học toàn diện PimaX</li>
+            </ul>
+            <p><strong>b) Phần thưởng hàng tuần (Top 10):</strong></p>
+            <ul>
+               <li>
+                  <i class="fa-solid fa-star"></i> <strong>Top 2:</strong> 100.000 VNĐ + 10 đề TSA kèm video chữa + giảm 40% học phí
+               </li>
+               <li>
+                  <i class="fa-solid fa-bullseye"></i> <strong>Top 8 còn lại:</strong> 5 đề TSA kèm video chữa + giảm 30% học phí
+               </li>
+            </ul>
+         </div>
+      </li>
+   </ol>
+</div>
+<div class="register-box">
+   <h2><i class="fa-solid fa-pen-to-square"></i> ĐĂNG KÝ THAM GIA CUỘC THI</h2>
+   <p>
+      Thí sinh vui lòng đăng ký tài khoản và điền form trước khi tham gia
+      các bài thi chính thức của PimaX TSABK Tournament. Thời gian đăng kí: Hết ngày 28/12/2025
+   </p>
+   <a href="https://docs.google.com/forms/d/1BGeWoQaCTOCkviJb8fbQ1kxnebybMEDUlZjp3HUO9ks/edit"
+      target="_blank"
+      rel="noopener">
+   <i class="fa-solid fa-hand-point-right"></i> ĐI TỚI FORM ĐĂNG KÝ
+   </a>
+</div>
+
+<!-- SCRIPT CUỐI TRANG -->
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
+
+
+
