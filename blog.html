@@ -32,9 +32,39 @@
 
 <div id="page-content">
 
-  <a href="index.html" class="back">← Trang chủ</a>
+    <!-- Hamburger Menu -->
+<div class="menu-dropdown">
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="menu-icon">
+    <i class="fa-solid fa-bars"></i>
+  </label>
+  <nav class="menu">
+    <a href="index.html">
+      <i class="fa-solid fa-house"></i>
+      Trang chủ
+    </a>
+    <a href="2025-2026.html">
+      <i class="fa-solid fa-calendar-days"></i>
+      2025–2026
+    </a>
+    <a href="blog.html">
+      <i class="fa-solid fa-pen-nib"></i>
+      Blog giải toán
+    </a>
+  </nav>
+</div>
 
-  <h1>Blog giải toán</h1>
+<script>
+  // Khi bấm ra ngoài menu, đóng menu
+  document.addEventListener('click', function(e) {
+    const menuDropdown = document.querySelector('.menu-dropdown');
+    const checkbox = document.getElementById('menu-toggle');
+    
+    if (checkbox.checked && !menuDropdown.contains(e.target)) {
+      checkbox.checked = false;
+    }
+  });
+</script>
 
   <div class="post">
     <h2>Bài toán tích phân</h2>
@@ -63,3 +93,4 @@
 
 </body>
 </html>
+
