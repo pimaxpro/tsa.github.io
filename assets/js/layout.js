@@ -2,28 +2,35 @@ fetch("layouts/default.html")
   .then(res => res.text())
   .then(html => {
 
-    // Parse layout
     const parser = new DOMParser();
     const layoutDoc = parser.parseFromString(html, "text/html");
 
-    // Lấy phần <main id="content"> trong layout
-    const layoutMain = layoutDoc.getElementById("content");
-
-    // Lấy nội dung trang hiện tại
+    const layoutHeader = layoutDoc.querySelector("header.site-header");
+    const layoutNav = layoutDoc.querySelector("nav.menu");
     const pageContent = document.getElementById("page-content");
 
-    if (!layoutMain || !pageContent) return;
+    if (!pageContent) return;
 
-    // Gắn layout vào body (KHÔNG ĐỤNG HEAD)
-    document.body.innerHTML = layoutDoc.body.innerHTML;
+    // Gắn header
+    if (layoutHeader) {
+      document.body.prepend(layoutHeader);
+    }
 
-    // Inject content
-    const realMain = document.getElementById("content");
-    realMain.innerHTML = pageContent.innerHTML;
+    // Gắn menu
+    if (layoutNav) {
+      document.body.insertBefore(layoutNav, pageContent);
+    }
 
-    // Render MathJax sau khi inject
+    // Đặt content vào main
+    let main = document.createElement("main");
+    main.id = "content";
+    main.innerHTML = pageContent.innerHTML;
+
+    pageContent.replaceWith(main);
+
+    // Render MathJax
     if (window.MathJax) {
-      MathJax.typesetPromise([realMain]);
+      MathJax.typesetPromise([main]);
     }
   })
   .catch(err => {
